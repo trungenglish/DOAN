@@ -1,0 +1,93 @@
+﻿@model DOAN.Models.Product
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/indexLayout.cshtml";
+}
+<style>
+    .container-delete {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        text-align: center;
+        color: #333;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .control-label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .btn-default {
+        background-color: #ccc;
+        color: #333;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div class="container-delete">
+    <h2>Xóa Sản Phẩm</h2>
+
+    @using (Html.BeginForm("Delete", "Product", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MASP, htmlAttributes: new { @class = "control-label" })
+            @Html.DisplayFor(model => model.MASP, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TENSP, htmlAttributes: new { @class = "control-label" })
+            @Html.DisplayFor(model => model.TENSP, new { @class = "form-control", @readonly = "readonly" })
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GIa, htmlAttributes: new { @class = "control-label" })
+            @Html.DisplayFor(model => model.GIa, new { @class = "form-control", @readonly = "readonly" })
+
+        </div>
+
+        <div class="form-actions">
+            <input type="submit" value="Xóa" class="btn btn-primary" /> |
+            @Html.ActionLink("Quay lại trang List", "Index", null, new { @class = "btn btn-default" })
+        </div>
+    }
+</div>

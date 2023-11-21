@@ -1,0 +1,99 @@
+﻿body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.container-list {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.product-image-sp{
+    height: 149px;
+    width: 149px;
+}
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+.product-list {
+    width: 100%;
+}
+
+.header,
+.product-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+    .header span,
+    .product-item span {
+        flex: 1;
+        text-align: center;
+    }
+
+.product-checkbox {
+    margin-right: 10px;
+}
+
+.btn-edit,
+.btn-delete,
+.btn-view {
+    padding: 8px 16px;
+    margin: 0 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.btn-edit {
+    background-color: #ffc107;
+    color: #333;
+}
+
+    .btn-edit:hover {
+        background-color: #e0a800;
+    }
+
+.btn-delete {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+    .btn-delete:hover {
+        background-color: #bd2130;
+    }
+
+.btn-view {
+    background-color: #007bff;
+    color: #fff;
+}
+
+    .btn-view:hover {
+        background-color: #0056b3;
+    }
+
+/* Style the "Chọn tất cả" checkbox label */
+#selectAll {
+    padding: 6px 10px;
+    border-radius: 5px;
+    background-color: #6ac19f62;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+/* Style the "Bỏ chọn tất cả" checkbox label */
+#deselectAll {
+    background-color: #6ac19f62;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}

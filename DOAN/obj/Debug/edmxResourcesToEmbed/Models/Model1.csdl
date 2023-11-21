@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DoAnWebbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AdminUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="NameUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="RoleUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordUser" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="MALOAIHANG" />
+    </Key>
+    <Property Name="MALOAIHANG" Type="Int32" Nullable="false" />
+    <Property Name="TENLOAIHANG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_Pro1_Category" FromRole="Category" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="MAKH" />
+    </Key>
+    <Property Name="MAKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENKH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="EMAIL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="OrderProes" Relationship="Self.FK__OrderPro__MAKH__403A8C7D" FromRole="Customer" ToRole="OrderPro" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="MACHITIET" />
+    </Key>
+    <Property Name="MACHITIET" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MASP" Type="Int32" />
+    <Property Name="MADH" Type="Int32" />
+    <Property Name="SOLUONG" Type="Int32" />
+    <Property Name="Tongtien" Type="Double" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__OrderDetai__MASP__4316F928" FromRole="OrderDetail" ToRole="Product" />
+    <NavigationProperty Name="OrderPro" Relationship="Self.FK_Prooder_detail" FromRole="OrderDetail" ToRole="OrderPro" />
+  </EntityType>
+  <EntityType Name="OrderPro">
+    <Key>
+      <PropertyRef Name="MADATHANG" />
+    </Key>
+    <Property Name="MADATHANG" Type="Int32" Nullable="false" />
+    <Property Name="MASP" Type="Int32" />
+    <Property Name="NGAYDAT" Type="DateTime" Precision="0" />
+    <Property Name="MAKH" Type="Int32" />
+    <Property Name="DIACHIGIAOHANG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PHUONGTHUCTTHANHTOAN" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK__OrderPro__MAKH__403A8C7D" FromRole="OrderPro" ToRole="Customer" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK_Prooder_detail" FromRole="OrderPro" ToRole="OrderDetail" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="MATHANHTOAN" />
+    </Key>
+    <Property Name="MASP" Type="Int32" />
+    <Property Name="MAKH" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="GHICHU" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NGAYTHANHTOAN" Type="DateTime" Precision="0" />
+    <Property Name="MATHANHTOAN" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_Pro4_Category" FromRole="Payment" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="MASP" />
+    </Key>
+    <Property Name="MASP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENSP" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MALOAIHANG" Type="Int32" />
+    <Property Name="GIa" Type="Double" />
+    <Property Name="HINHSP" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MOTA" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MATOP" Type="Int32" />
+    <Property Name="MASIZE" Type="Int32" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_Pro1_Category" FromRole="Product" ToRole="Category" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDetai__MASP__4316F928" FromRole="Product" ToRole="OrderDetail" />
+    <NavigationProperty Name="Payments" Relationship="Self.FK_Pro4_Category" FromRole="Product" ToRole="Payment" />
+    <NavigationProperty Name="size" Relationship="Self.FK_Prooder_d" FromRole="Product" ToRole="size" />
+    <NavigationProperty Name="Topping" Relationship="Self.FK_Prooder_p" FromRole="Product" ToRole="Topping" />
+  </EntityType>
+  <EntityType Name="size">
+    <Key>
+      <PropertyRef Name="Masize" />
+    </Key>
+    <Property Name="Masize" Type="Int32" Nullable="false" />
+    <Property Name="Loai" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="giasize" Type="Double" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_Prooder_d" FromRole="size" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Topping">
+    <Key>
+      <PropertyRef Name="Matop" />
+    </Key>
+    <Property Name="Matop" Type="Int32" Nullable="false" />
+    <Property Name="Tentop" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="giatop" Type="Double" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_Prooder_p" FromRole="Topping" ToRole="Product" />
+  </EntityType>
+  <Association Name="FK_Pro1_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="MALOAIHANG" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="MALOAIHANG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderPro__MAKH__403A8C7D">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="OrderPro" Type="Self.OrderPro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="MAKH" />
+      </Principal>
+      <Dependent Role="OrderPro">
+        <PropertyRef Name="MAKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDetai__MASP__4316F928">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="MASP" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="MASP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prooder_detail">
+    <End Role="OrderPro" Type="Self.OrderPro" Multiplicity="0..1" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderPro">
+        <PropertyRef Name="MADATHANG" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="MADH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pro4_Category">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="MASP" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="MASP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prooder_d">
+    <End Role="size" Type="Self.size" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="size">
+        <PropertyRef Name="Masize" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="MASIZE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prooder_p">
+    <End Role="Topping" Type="Self.Topping" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Topping">
+        <PropertyRef Name="Matop" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="MATOP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DoAnWebbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AdminUsers" EntityType="Self.AdminUser" />
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+    <EntitySet Name="OrderProes" EntityType="Self.OrderPro" />
+    <EntitySet Name="Payments" EntityType="Self.Payment" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="sizes" EntityType="Self.size" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Toppings" EntityType="Self.Topping" />
+    <AssociationSet Name="FK_Pro1_Category" Association="Self.FK_Pro1_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderPro__MAKH__403A8C7D" Association="Self.FK__OrderPro__MAKH__403A8C7D">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="OrderPro" EntitySet="OrderProes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDetai__MASP__4316F928" Association="Self.FK__OrderDetai__MASP__4316F928">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="OrderDetail" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prooder_detail" Association="Self.FK_Prooder_detail">
+      <End Role="OrderPro" EntitySet="OrderProes" />
+      <End Role="OrderDetail" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pro4_Category" Association="Self.FK_Pro4_Category">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Payment" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prooder_d" Association="Self.FK_Prooder_d">
+      <End Role="size" EntitySet="sizes" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prooder_p" Association="Self.FK_Prooder_p">
+      <End Role="Topping" EntitySet="Toppings" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,100 @@
+﻿@model DOAN.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/indexLayout.cshtml";
+}
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        background-color: #f4f4f4;
+    }
+
+    .container details{
+        max-width: 800px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        text-align: center;
+        color: #333;
+    }
+
+    .product-details {
+        width: 100%;
+    }
+
+    .product-item {
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #ddd;
+        padding: 10px 0;
+    }
+
+    .detail-label {
+        flex: 1;
+        font-weight: bold;
+    }
+
+    .detail-value {
+        flex: 2;
+    }
+    .product-details {
+        max-width: 600px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .detail-label {
+        font-weight: bold;
+    }
+
+    .detail-value {
+        margin-bottom: 10px;
+    }
+</style>
+
+
+<h2>Details</h2>
+
+
+<div class="container-details">
+    <h2>Chi Tiết Sản Phẩm</h2>
+    <div class="product-details">
+        <div class="product-item">
+            <span class="detail-label">Mã sản phẩm: </span>
+            <span class="detail-value">@Html.DisplayFor(model => model.MASP)</span>
+        </div>
+        <div class="product-item">
+            <span class="detail-label">Tên Sản Phẩm:</span>
+            <span class="detail-value">@Html.DisplayFor(model => model.TENSP)</span>
+        </div>
+        <div class="product-item">
+            <span class="detail-label">Kích Cỡ:</span>
+            <span class="detail-value">Lớn</span>
+        </div>
+        <div class="product-item">
+            <span class="detail-label">Topping:</span>
+            <span class="detail-value">Chocolate</span>
+        </div>
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">            |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
+
+

@@ -1,0 +1,130 @@
+﻿
+@{
+    ViewBag.Title = "chititetsp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/csschitietsp.css" rel="stylesheet" />
+<div id="breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <ul>
+                <li><a href=""><span>Menu </span></a></li>
+                <li><a href=""><span>/ Cà Phê </span></a></li>
+                <li><a href=""><span>/ Cà Phê Sữa Đá </span></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div id="main-content">
+    <div class="container flex">
+        <div class="main-img">
+            <div class="productCarousel">
+                <img src="https://product.hstatic.net/1000075078/product/1669736835_ca-phe-sua-da_e6168b6a38ec45d2b4854d2708b5d542.png" width="570px" max-height="570px" />
+            </div>
+            <div>
+                <img src="https://product.hstatic.net/1000075078/product/1669736835_ca-phe-sua-da_e6168b6a38ec45d2b4854d2708b5d542.png" width="77px" max-height="77px" />
+            </div>
+        </div>
+
+        <div class="main-info">
+            <div class="info-product">
+                <p class="info-product-title">Cà phê sữa đá</p>
+                <div class="info-product-price">
+                    <span class="price">29.000 đ</span>
+                </div>
+            </div>
+
+            <div class="option-size">
+                <p class="option-title">Chọn size (bắt buộc )</p>
+                <div class="product-option">
+                    <div class="opt-size">
+                        <div class="product__info__item__list__item icons_0">
+                            <div>Nhỏ + 0 đ</div>
+                        </div>
+                        <div class="product__info__item__list__item icons_0">
+                            <div>Vừa + 10.000 đ</div>
+                        </div>
+                        <div class="product__info__item__list__item icons_0">
+                            <div>Lớn + 16.000 đ</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="option-topping">
+                <p class="option-title">Topping</p>
+                <div class="product-option">
+                    <label class="option-item">
+                        <div class="option-inner">
+                            <div class="name">Kem Phô Mai Macchiatio + 10.000 đ</div>
+                        </div>
+                    </label>
+                    <label class="option-item">
+                        <div class="option-inner">
+                            <div class="name">Shot Espresso + 10.000 đ</div>
+                        </div>
+                    </label>
+                    <label class="option-item">
+                        <div class="option-inner">
+                            <div class="name">Trân Châu Trắng + 10.000 đ</div>
+                        </div>
+                    </label>
+                    <label class="option-item">
+                        <div class="option-inner">
+                            <div class="name">Sốt Caramel + 10.000 đ</div>
+                        </div>
+                    </label>
+                    <label class="option-item">
+                        <div class="option-inner">
+                            <div class="name">Thạch Cà Phê + 10.000 đ</div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <div class="product-to-cart">
+                <ul class="order-method">
+                    <li class="x1"><a><span style="margin-left: 11px">Đặt giao tận nơi</span></a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="product-info">
+    <div class="container">
+        <div class="container-info">
+            <hr />
+            <div>
+                <h4 class="product-title">Mô tả sản phẩm</h4>
+                <p>Cà phê Đắk Lắk nguyên chất được pha phin truyền thống kết hợp với sữa đặc tạo nên hương vị đậm đà, hài hòa giữa vị ngọt đầu lưỡi và vị đắng thanh thoát nơi hậu vị.</p>
+            </div>
+            <hr />
+            <div class="product-related">
+                <h4>Các sản phẩm liên quan</h4>
+                <div class="list_product_related">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+    var tangtien = function () {
+        var giatopping = document.getElementByclassname("luachon");
+        var giatang = document.getElementByclassname("giagoc");
+        if (giatopping.clickedf) {
+            var toppingprice = parseInt(giatopping.value);
+            var curentprice = parseInt(giatang.textContent);
+            giatang.textContent = curentprice + toppingprice
+        }
+        else {
+            var toppingprice = parseInt(giatopping.value);
+            var curentprice = parseInt(giatang.textContent);
+            giatang.textContent = curentprice - toppingprice
+        }
+    }</script>
+

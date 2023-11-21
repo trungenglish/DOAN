@@ -1,0 +1,168 @@
+﻿@model IEnumerable<DOAN.Models.Product>
+@*@using DOAN.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<Product>*@
+@{
+    ViewBag.Title = "Menu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/cssMenu.css" rel="stylesheet" />
+<div id="collection">
+    <div class="collection-menu-wrap">
+        <div class="container flex">
+            <div class="nav-left">
+                <aside>
+                    <ul class="nav-left-content">
+                        <li>
+                            <a class="menu-scroll active">Tất cả</a>
+                            <ul class="">
+                            </ul>
+                        </li>
+                        <li><a class="menu-scroll active">Cà Phê</a></li>
+                        <li><a class="menu-scroll active">Trà</a></li>
+                        <li><a class="menu-scroll active">Cloud</a></li>
+                        <li><a class="menu-scroll active">Hi-Tea Healthy</a></li>
+                        <li><a class="menu-scroll active">Trà Xanh - Sô cô la</a></li>
+                        <li><a class="menu-scroll active">Thức uống đá xay</a></li>
+                        <li><a class="menu-scroll active">Bánh & Snack</a></li>
+                        <li><a class="menu-scroll active">Thưởng Thức Tại Nhà</a></li>
+                    </ul>
+                </aside>
+            </div>
+            <div class="nav-right">
+                <div class="block1">
+                    <h3><span clss="block1-content">Cà Phê HighLand</span></h3>
+                    <div class="block1-wrap">
+                        @{
+                            int highlandcafe = 1;
+                            var outitem = Model.Where(s => s.Category.MALOAIHANG == highlandcafe);
+                        }
+                        @foreach (var pro in outitem)
+                        {
+                            <div class="menu-items">
+                                <a href="/Product/ProductDetails/@pro.MASP">
+                                    <div class="menu-items-image">
+
+                                        <img src="@Url.Content(pro.HINHSP)" />
+                                    </div>
+                                </a>
+                                <div class="menu-items-info">
+                                    <h3>
+                                        <a href="">@Html.DisplayFor(model => pro.TENSP)</a>
+                                    </h3>
+                                    <div class="price-product-items">@Html.DisplayFor(model => pro.GIa) </div>
+                                    <a href="/GioHang/AddToCart/@pro.MASP" class="btn btn-default">
+                                        Buy
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="block1">
+                    <h3><span clss="block1-content">Cà Phê Việt Nam</span></h3>
+                    <div class="block1-wrap">
+                        @{
+                            highlandcafe = 2;
+                            outitem = Model.Where(s => s.Category.MALOAIHANG == highlandcafe);
+                        }
+                        @foreach (var pro in outitem)
+                        {
+
+                            <div class="menu-items">
+                                <a href="/Product/ProductDetails/@pro.MASP">
+                                    <div class="menu-items-image">
+
+                                        <img src="@Url.Content(pro.HINHSP)" />
+                                    </div>
+                                </a>
+                                <div class="menu-items-info">
+                                    <h3>
+                                        <a href="">@Html.DisplayFor(model => pro.TENSP)</a>
+                                    </h3>
+                                    <div class="price-product-items">@Html.DisplayFor(model => pro.GIa) </div>
+                                    <a href="/GioHang/AddToCart/@pro.MASP" class="btn btn-default">
+                                        Buy
+                                    </a>
+                                </div>
+                            </div>
+
+                        }
+                    </div>
+                </div>
+                <div class="block1">
+                    <h3><span clss="block1-content">Cà Phê Máy</span></h3>
+                    <div class="block1-wrap">
+                        @{
+                            highlandcafe = 3;
+                            outitem = Model.Where(s => s.Category.MALOAIHANG == highlandcafe);
+                        }
+                        @foreach (var pro in outitem)
+                        {
+                            <div class="menu-items">
+                                <a href="/Product/ProductDetails/@pro.MASP">
+                                    <div class="menu-items-image">
+
+                                        <img src="@Url.Content(pro.HINHSP)" />
+                                    </div>
+                                </a>
+                                <div class="menu-items-info">
+                                    <h3>
+                                        <a href="">@Html.DisplayFor(model => pro.TENSP)</a>
+                                    </h3>
+                                    <div class="price-product-items">@Html.DisplayFor(model => pro.GIa) </div>
+                                    <a href="/GioHang/AddToCart/@pro.MASP" class="btn btn-default">
+                                        Buy
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="block1">
+                    <h3><span clss="block1-content">Trà Trái cây</span></h3>
+                    <div class="block1-wrap">
+                        @{
+                            highlandcafe = 4;
+                            outitem = Model.Where(s => s.Category.MALOAIHANG == highlandcafe);
+                        }
+                        @foreach (var pro in outitem)
+                        {
+                            <div class="menu-items">
+                                <a href="/Product/ProductDetails/@pro.MASP">
+                                    <div class="menu-items-image">
+
+                                        <img src="@Url.Content(pro.HINHSP)" />
+                                    </div>
+                                </a>
+                                <div class="menu-items-info">
+                                    <h3>
+                                        <a href="">@Html.DisplayFor(model => pro.TENSP)</a>
+                                    </h3>
+                                    <div class="price-product-items">@Html.DisplayFor(model => pro.GIa) </div>
+                                    <a href="/GioHang/AddToCart/@pro.MASP" class="btn btn-default">
+                                        Buy
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Trang @(Model.PageCount<Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+<style>
+    .MenuPage li {
+        display: inline;
+    }
+</style>
+
+<div class="MenuPage">
+
+    @Html.PagedListPager(Model, page => Url.Action("Menu", new { page = page }))
+</div>*@
+

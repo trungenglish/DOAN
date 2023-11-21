@@ -1,0 +1,64 @@
+﻿@model DOAN.Models.Customer
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/Trangorder.cshtml";
+}
+
+<style>
+    /* CSS cho modal */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        padding: 20px;
+        z-index: 999;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+</style>
+</head>
+<body>
+    <div id="login-container">
+        <h2>Đăng nhập bằng số điện thoại</h2>
+
+        <!-- Form đăng nhập -->
+        <form id="login-form">
+            <!-- Input số điện thoại -->
+            <label for="phoneNumber">Số điện thoại:</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" required />
+
+            <!-- Button lấy mã xác nhận -->
+            <button type="button" onclick="generateAndDisplayVerificationCode()">Lấy mã xác nhận</button>
+        </form>
+
+        <!-- Modal hiển thị mã xác nhận -->
+        <div id="verificationModal" class="modal">
+            <label for="verificationCode">Mã xác nhận:</label>
+            <input type="text" id="verificationCode" name="verificationCode" required />
+            <button type="button" onclick="login()">Xác nhận</button>
+        </div>
+    </div>
+
+    <!-- Thêm các tài nguyên JavaScript cần thiết -->
+    <script>
+        function generateAndDisplayVerificationCode() {
+            // Logic để tạo mã xác nhận ngẫu nhiên
+            var verificationCode = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
+
+            // Hiển thị mã xác nhận trong alert
+            alert("Mã xác nhận: " + verificationCode);
+
+            // Hiển thị modal để nhập mã xác nhận
+            document.getElementById("verificationModal").style.display = "block";
+        }
+
+        function login() {
+            // Thực hiện đăng nhập ở đây
+            alert("Đăng nhập thành công!");
+            // Đóng modal sau khi đăng nhập thành công
+            document.getElementById("verificationModal").style.display = "none";
+        }
+    </script>

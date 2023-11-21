@@ -1,0 +1,94 @@
+﻿@*@model IEnumerable<DOAN.Models.Product>*@
+@model PagedList.PagedList<DOAN.Models.Product>
+    @using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/indexLayout.cshtml";
+}
+
+<link href="~/Content/csslistProduct.css" rel="stylesheet" />
+
+<style>
+    .create-button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        border: 1px solid #3498db;
+        color: #fff;
+        background-color: #3498db;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+        .create-button:hover {
+            background-color: #2980b9;
+        }
+</style>
+
+<div class="container-list">
+    <h2>Danh Sách Sản Phẩm</h2>
+    @Html.ActionLink("Tạo Mới", "Create", "Product", new { @class = "btn btn-primary create-button" })
+    <input type="text" name="_name" />
+    <input type="submit" value="Search" />
+    <div class="product-list">
+        <div class="header">
+            <span>ID</span>
+            <span>Tên Sản Phẩm</span>
+            <span>Hình Ảnh</span>
+            <span>Giá</span>
+            <span>Thao Tác</span>
+        </div>
+        @foreach (var item in Model)
+        {
+            <div class="product-item">
+                <input type="checkbox" class="checkbox">
+
+                <span class="product-id">@Html.DisplayFor(modelItem => item.MASP)</span>
+
+                <span class="product-name"> @Html.DisplayFor(modelItem => item.TENSP) </span>
+
+                <span class="product-image"><img src="@Url.Content(item.HINHSP)" class=" product-image-sp" /></span>
+
+                <span class="product-price">@Html.DisplayFor(modelItem => item.GIa)</span>
+
+                <span class="product-actions">
+                    <button class="btn-edit">@Html.ActionLink("Sửa", "Edit", new { id = item.MASP })</button>
+
+                    <button class="btn-delete">@Html.ActionLink("Xóa", "Delete", new { id = item.MASP })</button>
+
+                    <button class="btn-view">@Html.ActionLink("Xem Chi Tiết", "Details", new { id = item.MASP })</button>
+                </span>
+            </div>
+            <!-- Thêm các sản phẩm khác tại đây -->
+        }
+    </div>
+
+    <button id="selectAll" type="button">Chọn tất cả</button>
+    <button id="deselectAll" type="button">Bỏ chọn tất cả</button>
+</div>
+
+<div class="pagination-container">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, _name = ViewBag.Name }))
+</div>
+
+<script>
+    var selectAllButton = document.getElementById("selectAll");
+    var deselectAllButton = document.getElementById("deselectAll");
+    var checkboxes = document.getElementsByClassName("checkbox");
+
+    selectAllButton.addEventListener("click", function () {
+        for (var i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].checked = true;
+        }
+    });
+
+    deselectAllButton.addEventListener("click", function () {
+        for (var i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].checked = false;
+        }
+    });
+</script>
