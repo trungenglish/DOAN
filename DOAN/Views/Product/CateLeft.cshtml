@@ -1,0 +1,8 @@
+﻿@model IEnumerable<DOAN.Models.Category>
+
+@foreach (var i in Model)
+ {
+    <li>
+        <a href="@Url.Action("ShowProductByCategory","Product")" class="menu-scroll active">@i.TENLOAIHANG</a>
+    </li>
+ }

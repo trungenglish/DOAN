@@ -24,6 +24,7 @@
     <Property Name="TENKH" Type="nvarchar(max)" />
     <Property Name="SDT" Type="nvarchar" MaxLength="15" />
     <Property Name="EMAIL" Type="nvarchar(max)" />
+    <Property Name="PASSWORD" Type="nchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="OrderDetail">
     <Key>
@@ -87,16 +88,6 @@ warning 6013: The table/view 'DoAnWebb.dbo.PaymentMethod' does not have a primar
     <Property Name="Masize" Type="int" Nullable="false" />
     <Property Name="Loai" Type="char" MaxLength="10" />
     <Property Name="giasize" Type="float" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="Topping">
     <Key>
@@ -202,7 +193,6 @@ error 6004: The table 'DoAnWebb.dbo.PaymentMethod' is referenced by a relationsh
     <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="size" EntityType="Self.size" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Topping" EntityType="Self.Topping" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__OrderDetai__MASP__4316F928" Association="Self.FK__OrderDetai__MASP__4316F928">
       <End Role="Product" EntitySet="Product" />

@@ -4,6 +4,105 @@
     ViewBag.Title = "RegisterUser";
     Layout = "~/Views/Shared/Trangorder.cshtml";
 }
+<style>
+    *{
+        box-sizing: border-box;
+    }
+    .container-register{
+        margin:  0 auto;
+        padding: 0;
+        height: 430px;
+        width: 420px;
+    }
+    .img-regis{
+        width: 420px;
+        height: 200px;
+    }
+    .content-regis{
+        padding: 20px;
+        width: 100%;
+    }
+    .flex{
+        display: flex;
+    }
+    .align-items-center {
+        align-items: center;
+    }
+    .justify-content{
+        justify-content: center;
+    }
+    .content-regis-first{
+        margin-bottom: 12px;
+    }
+    .flex-direction{
+        flex-direction: column;
+    }
+    .logo-tch{
+        margin-bottom: 32px;
+    }
+    .cover-input{
+        background-color: #fafafa;
+        border: 1px solid #ededed;
+        border-radius: 4px; 
+        height: 44px;
+        width: 100%;
+    }
+    .region {
+        border-right: 1px solid #ededed;
+        margin: 10px 0 10px 10px;
+        padding-right: 16px;
+        display: flex;
+    }
+    .register-button {
+        height: 35px;
+        width: 100%;
+        cursor: pointer;
+        color: #fff;
+        border-radius: 100px;
+        background: radial-gradient(100% 488.28% at 0% 100%,#e87800 0%,#fa8c16 100%);
+    }
+    .margin-bottom{
+        margin-bottom: 12px;
+    }
+</style>
 
-<h2>RegisterUser</h2>
+<div class="container-register">
+    <div class="img-regis">
+        <img src="https://order.thecoffeehouse.com/_nuxt/img/thumbnail-login-pop-up.e10d0dd.png" class="img-regis"/>
+    </div>
+    @using (Html.BeginForm("RegisterUser", "LoginUser", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="content-regis flex align-items-center justify-content flex-direction">
+            <div class="content-regis-first">Chào mừng bạn đến với</div>
+            <img class="logo-tch" src="https://order.thecoffeehouse.com/_nuxt/img/logo-black.44900f6.svg" />
+            <div class="content-regis-first">Đăng ký</div>
+            <div class="flex align-items-center cover-input margin-bottom">
+                <div class="region">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjUiIHZpZXdCb3g9IjAgMCAyNCAyNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDI0LjM2NTdDMTguNjI3NCAyNC4zNjU3IDI0IDE4Ljk5MzEgMjQgMTIuMzY1N0MyNCA1LjczODMxIDE4LjYyNzQgMC4zNjU3MjMgMTIgMC4zNjU3MjNDNS4zNzI1OCAwLjM2NTcyMyAwIDUuNzM4MzEgMCAxMi4zNjU3QzAgMTguOTkzMSA1LjM3MjU4IDI0LjM2NTcgMTIgMjQuMzY1N1oiIGZpbGw9IiNGNTIyMkQiLz4KPHBhdGggZD0iTTEyLjAwMTYgMTUuMTY1OEwxNS45NjE2IDE3Ljk2NThMMTQuNDgxNiAxMy40MDU4TDE4LjQwMTYgMTAuNDQ1OEgxMy41MjE2TDEyLjAwMTYgNS45NjU4MkwxMC41MjE2IDEwLjQ0NThINS42MDE1Nkw5LjUyMTU2IDEzLjQwNThMOC4wNDE1NiAxNy45NjU4TDEyLjAwMTYgMTUuMTY1OFoiIGZpbGw9IiNGRkU2MkUiLz4KPC9zdmc+Cg==" />
+                    <span>+84</span>
+                </div>
+                @Html.TextBoxFor(model => model.SDT, new { @class = "cover-input", placeholder = "Nhập số điện thoại" })
+                @Html.ValidationMessageFor(model => model.SDT)                
+            </div>
+            <div class="flex align-items-center cover-input margin-bottom">
+                @Html.TextBoxFor(model => model.PASSWORD, new { @class = "cover-input", placeholder = "Nhập mật khẩu" })
+                @Html.ValidationMessageFor(model => model.PASSWORD)
+            </div>
+            <div class="flex align-items-center cover-input margin-bottom">
+                @Html.TextBoxFor(model => model.ConfirmPass, new { @class = "cover-input", placeholder = "Xác nhận lại mật khẩu"}) 
+                @Html.ValidationMessageFor(model => model.ConfirmPass)
+            </div>
+            <div class="flex align-items-center cover-input margin-bottom">
+                @Html.TextBoxFor(model => model.TENKH, new { @class = "cover-input", placeholder ="Nhập Họ Tên"})
+                @Html.ValidationMessageFor(model => model.TENKH)
+            </div>
+            <div class="flex align-items-center cover-input margin-bottom">
+                @Html.TextBoxFor(model => model.EMAIL, new {@class="cover-input", placeholder="Nhập email"})
+                @Html.ValidationMessageFor(model => model.EMAIL)
+            </div>
+            <button class="register-button margin-bottom" type="submit" value="Register">Đăng ký</button>
+        </div>    
+    }
+</div>
 

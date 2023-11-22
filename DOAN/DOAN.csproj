@@ -139,6 +139,7 @@
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ListCustomerController.cs" />
     <Compile Include="Controllers\LoginUserController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ToppingController.cs" />
@@ -189,9 +190,6 @@
     <Compile Include="Models\size.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Topping.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -222,6 +220,7 @@
     <Content Include="Content\csscreatecate.css" />
     <Content Include="Content\CSSdetail.css" />
     <Content Include="Content\CssLayout.css" />
+    <Content Include="Content\csslistCustomer.css" />
     <Content Include="Content\csslistProduct.css" />
     <Content Include="Content\cssmainoder.css" />
     <Content Include="Content\cssMenu.css" />
@@ -366,9 +365,13 @@
     <Content Include="Views\GioHang\EmptyCart.cshtml" />
     <Content Include="Views\Shared\Layout_Admin.cshtml" />
     <Content Include="Views\AdminLogin\Index.cshtml" />
-    <Content Include="Views\LoginUser\Index.cshtml" />
-    <Content Include="Views\LoginUser\Login.cshtml" />
     <Content Include="Views\LoginUser\RegisterUser.cshtml" />
+    <Content Include="Views\LoginUser\Login.cshtml" />
+    <Content Include="Views\ListCustomer\ListCustomer.cshtml" />
+    <Content Include="Views\LoginUser\AddInfo.cshtml" />
+    <Content Include="Views\Product\CateLeft.cshtml" />
+    <Content Include="Views\Product\AllProduct.cshtml" />
+    <Content Include="Views\Product\ShowProductByCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

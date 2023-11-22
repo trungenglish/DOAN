@@ -25,6 +25,7 @@
     <Property Name="TENKH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="SDT" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
     <Property Name="EMAIL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
     <NavigationProperty Name="OrderProes" Relationship="Self.FK__OrderPro__MAKH__403A8C7D" FromRole="Customer" ToRole="OrderPro" />
   </EntityType>
   <EntityType Name="OrderDetail">
@@ -89,16 +90,6 @@
     <Property Name="Loai" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
     <Property Name="giasize" Type="Double" />
     <NavigationProperty Name="Products" Relationship="Self.FK_Prooder_d" FromRole="size" ToRole="Product" />
-  </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityType Name="Topping">
     <Key>
@@ -202,7 +193,6 @@
     <EntitySet Name="Payments" EntityType="Self.Payment" />
     <EntitySet Name="Products" EntityType="Self.Product" />
     <EntitySet Name="sizes" EntityType="Self.size" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="Toppings" EntityType="Self.Topping" />
     <AssociationSet Name="FK_Pro1_Category" Association="Self.FK_Pro1_Category">
       <End Role="Category" EntitySet="Categories" />

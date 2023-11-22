@@ -1,0 +1,50 @@
+﻿@model IEnumerable<DOAN.Models.Customer>
+
+@{
+    ViewBag.Title = "ListCustomer";
+    Layout = "~/Views/Shared/indexLayout.cshtml";
+}
+
+<link href="~/Content/csslistProduct.css" rel="stylesheet" />
+
+<div class="container-list">
+    <h2>Danh Sách Tài Khoản</h2>
+    <input type="text" name="_name" />
+    <input type="submit" value="Search" />
+    <div class="product-list">
+        <div class="header">
+            <span>MAKH</span>
+            <span>SĐT</span>
+            <span>Tên Khách Hàng</span>
+            <span>Email</span>
+            <span>Mật Khẩu</span>
+            <span>Thao Tác</span>
+        </div>
+        @foreach (var item in Model)
+        {
+            <div class="product-item">
+                <input type="checkbox" class="checkbox">
+
+                <span class="product-id">@Html.DisplayFor(modelItem => item.MAKH)</span>
+
+                <span class="product-name"> @Html.DisplayFor(modelItem => item.TENKH) </span>
+
+                <span class="product-image"><img src="@Url.Content(item.EMAIL);" class=" product-image-sp" /></span>
+
+                <span class="product-price">@Html.DisplayFor(modelItem => item.PASSWORD)</span>
+
+                <span class="product-actions">
+                    <button class="btn-edit">@Html.ActionLink("Sửa", "Edit", new { id = item.MAKH })</button>
+
+                    <button class="btn-delete">@Html.ActionLink("Xóa", "Delete", new { id = item.MAKH })</button>
+
+                    <button class="btn-view">@Html.ActionLink("Xem Chi Tiết", "Details", new { id = item.MAKH })</button>
+                </span>
+            </div>
+            
+        }
+    </div>
+
+    <button id="selectAll" type="button">Chọn tất cả</button>
+    <button id="deselectAll" type="button">Bỏ chọn tất cả</button>
+</div>

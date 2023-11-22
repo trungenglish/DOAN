@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using System.IO;
+using System.ComponentModel;
 
 namespace DOAN.Models
 {
@@ -23,6 +24,14 @@ namespace DOAN.Models
         {
             [NotMapped]
             public List<Category> ListCate { get; set; }
+        }
+        [MetadataType(typeof(CustomerMetadata))]
+        public partial class Customer
+        {
+            [NotMapped]
+            [Compare("PASSWORD")]
+            [DisplayName("Nhập lại mật khẩu")]
+            public string ConfirmPass { get; set; }
         }
     }
 }

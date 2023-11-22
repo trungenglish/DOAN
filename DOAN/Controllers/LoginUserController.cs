@@ -13,6 +13,28 @@ namespace DOAN.Controllers
         DoAnWebbEntities database = new DoAnWebbEntities();
 
         // GET: LoginUser
+        public ActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Login(Customer user)
+        {
+            var check = database.Customers.Where(s => s.SDT == user.SDT && s.PASSWORD == user.PASSWORD).FirstOrDefault();
+            if (check == null)
+            {
+                ViewBag.ErroInfo = "Sai thông tin đăng nhập";
+                return View("Login");
+            }
+            else
+            {
+                database.Configuration.ValidateOnSaveEnabled = false;
+                Session["SDT"] = user.SDT;
+                Session["Password"] = user.PASSWORD;
+                return RedirectToAction("Trangchu","Home");
+            }
+            
+        }
         public ActionResult RegisterUser()
         {
             return View();
@@ -39,6 +61,8 @@ namespace DOAN.Controllers
             }
             return View();
         }
+       
+
         //public ActionResult Create()
         //{
         //    return View();

@@ -51,6 +51,7 @@ namespace DOAN.Models
         public string NameUser { get; set; }
         public string RoleUser { get; set; }
         public string PasswordUser { get; set; }
+
     }
     public class CustomerMetadata
     {

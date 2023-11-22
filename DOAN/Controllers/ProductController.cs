@@ -10,6 +10,7 @@ using System.Xml.Linq;
 using PagedList;
 using PagedList.Mvc;
 using System.Web.UI;
+using System.Web.Razor;
 
 namespace DOAN.Controllers
 {
@@ -33,9 +34,7 @@ namespace DOAN.Controllers
         //}
 
         public ActionResult Menu(string _name, int? page, double min = double.MinValue, double max = double.MaxValue)
-        {
-            
-
+        {         
             if (_name == null)
                 return View(database.Products.ToList());
             else
@@ -142,7 +141,91 @@ namespace DOAN.Controllers
             return PartialView(database.Products.ToList());
         }
 
-        
+        public PartialViewResult CateLeft()
+        {
+            return PartialView(database.Categories.ToList());
+        }
 
+        public PartialViewResult ShowProductByCategory(int? ID_CATEGORY)
+        {
+            //string tenDM = string.Empty;
+            //List<Product> list = new List<Product>();
+            //if (ID_CATEGORY != null) 
+            //{
+            //    list = database.Products.Where(s => s.MALOAIHANG == ID_CATEGORY).ToList();  
+            //    if (list.Count > 0)
+            //    {
+            //        tenDM = database.Categories.SingleOrDefault(s => s.MALOAIHANG == ID_CATEGORY)?.TENLOAIHANG;
+            //    }
+            //    else
+            //    {
+            //        ViewBag.tenDM = "Không có sản phẩm này";
+            //    }
+            //}
+            //else
+            //{
+            //    ID_CATEGORY = 1;
+            //    list = database.Products.Where(t => t.MALOAIHANG == ID_CATEGORY.Value).ToList();
+            //    tenDM = database.Categories.SingleOrDefault(t => t.MALOAIHANG == ID_CATEGORY.Value)?.TENLOAIHANG;
+            //}
+            //ViewBag.tenDM = tenDM;
+
+            //return PartialView(list);
+            if (ID_CATEGORY == null)
+            {
+                string tenDM = database.Categories.SingleOrDefault(t => t.MALOAIHANG == 0).TENLOAIHANG.ToString();
+                var list = database.Products.Where(t => t.MALOAIHANG == 0).ToList();
+                ViewBag.tenDM = tenDM;
+                //ViewData["ResponseLogin"] = TempData["ResponseLogin"].ToString();
+                return PartialView(list);
+            }
+            else
+            {
+
+                string tenDM = database.Categories.SingleOrDefault(t => t.MALOAIHANG == 1).TENLOAIHANG.ToString();
+                var list = database.Products.Where(t => t.MALOAIHANG == ID_CATEGORY).ToList();
+
+                if (list.Count <= 0)
+                {
+                    ViewBag.tenDM = "Không món ở danh mục này " + tenDM;
+                }
+                else
+                    ViewBag.tenDM = tenDM;
+                return PartialView(list);
+            }
+        }
+
+        //public ActionResult ProductByCategory(int ID_CATEGORY)
+        //{
+        //    if (ID_CATEGORY == null)
+        //    {
+        //        string tenDM = database.Categories.SingleOrDefault(t => t.MALOAIHANG == 1).TENLOAIHANG.ToString();
+        //        var list = database.Products.Where(t => t.MALOAIHANG == 1).ToList();
+        //        ViewBag.tenDM = tenDM;
+        //        //ViewData["ResponseLogin"] = TempData["ResponseLogin"].ToString();
+        //        return View(list);
+        //    }
+        //    else
+        //    {
+
+        //        string tenDM = database.Categories.SingleOrDefault(t => t.MALOAIHANG == 1).TENLOAIHANG.ToString();
+        //        var list = database.Products.Where(t => t.MALOAIHANG == ID_CATEGORY).ToList();
+
+        //        if (list.Count <= 0)
+        //        {
+        //            ViewBag.tenDM = "Không món ở danh mục này " + tenDM;
+        //        }
+        //        else
+        //            ViewBag.tenDM = tenDM;
+        //        return View(list);
+        //    }
+        //}
+        public ActionResult AllProduct(string _name)
+        {
+            if (_name == null)
+                return View(database.Products.ToList());
+            else
+                return View(database.Products.Where(s => s.TENSP.Contains(_name)).ToList());
+        }
     }
 }

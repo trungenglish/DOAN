@@ -21,7 +21,7 @@ namespace DOAN.Models
         {
             this.OrderDetails = new HashSet<OrderDetail>();
             this.Payments = new HashSet<Payment>();
-            HINHSP = "~/Content/img/suada.jpg";
+            HINHSP = "~/Content/img/suada/jpg";
         }
     
         public int MASP { get; set; }

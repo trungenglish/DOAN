@@ -15,23 +15,26 @@
                 <aside>
                     <ul class="nav-left-content">
                         <li>
-                            <a class="menu-scroll active">Tất cả</a>
+                            <a href="@Url.Action("AllProduct","Product")" class="menu-scroll active">Tất cả</a>
                             <ul class="">
                             </ul>
                         </li>
-                        <li><a class="menu-scroll active">Cà Phê</a></li>
+                        @{ Html.RenderAction("CateLeft", "Product");}
+                        @*<li><a class="menu-scroll active">Cà Phê</a></li>
                         <li><a class="menu-scroll active">Trà</a></li>
                         <li><a class="menu-scroll active">Cloud</a></li>
                         <li><a class="menu-scroll active">Hi-Tea Healthy</a></li>
                         <li><a class="menu-scroll active">Trà Xanh - Sô cô la</a></li>
                         <li><a class="menu-scroll active">Thức uống đá xay</a></li>
                         <li><a class="menu-scroll active">Bánh & Snack</a></li>
-                        <li><a class="menu-scroll active">Thưởng Thức Tại Nhà</a></li>
+                        <li><a class="menu-scroll active">Thưởng Thức Tại Nhà</a></li>*@
                     </ul>
                 </aside>
             </div>
             <div class="nav-right">
-                <div class="block1">
+                @{ Html.RenderAction("AllProduct", "Product");}
+                @{ Html.RenderAction("ShowProductByCategory","Product");}
+                @*<div class="block1">
                     <h3><span clss="block1-content">Cà Phê HighLand</span></h3>
                     <div class="block1-wrap">
                         @{
@@ -148,7 +151,7 @@
                             </div>
                         }
                     </div>
-                </div>
+                </div>*@
             </div>
         </div>
     </div>
